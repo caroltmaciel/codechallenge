@@ -16,10 +16,15 @@ public class Contract {
     private LocalDateTime updateDate;
 
 
-    public Contract(LocalDateTime startDate, LocalDateTime endDate, Integer costAmount) {
+    public Contract() {
+    }
+
+    public Contract(Long id, LocalDateTime startDate, LocalDateTime endDate, Integer costAmount, LocalDateTime updateDate) {
+        this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.costAmount = costAmount;
+        this.updateDate = updateDate;
     }
 
     public Long getId() {

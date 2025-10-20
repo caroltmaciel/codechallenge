@@ -1,25 +1,17 @@
 package com.github.caroltmaciel.codechallenge.dto;
 
-import com.github.caroltmaciel.codechallenge.domain.Person;
-
 import java.util.Date;
 
-public class PersonDto {
+public class ClientDto {
+
     private Long id;
     private Integer phone;
     private String email;
     private String name;
     private Date birthDate;
+    private String companyIdentifier;
 
-    public PersonDto() {
-    }
-
-    public PersonDto(Person obj) {
-        id = obj.getId();
-        phone = obj.getPhone();
-        email = obj.getEmail();
-        name = obj.getName();
-        birthDate = obj.getBirthDate();
+    public ClientDto() {
     }
 
     public Long getId() {
@@ -60,5 +52,13 @@ public class PersonDto {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public String getCompanyIdentifier() {
+        return companyIdentifier;
+    }
+
+    public void setCompanyIdentifier(String companyIdentifier) {
+        this.companyIdentifier = companyIdentifier;
     }
 }
