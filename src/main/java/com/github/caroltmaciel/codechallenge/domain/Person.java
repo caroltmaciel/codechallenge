@@ -15,11 +15,18 @@ public class Person {
     private String name;
     private Date birthDate;
 
+    public Person() {
+    }
+
     public Person(Integer phone, String email, String name, Date birthDate) {
         this.phone = phone;
         this.email = email;
         this.name = name;
         this.birthDate = birthDate;
+    }
+
+    public Person(Long id, String name, String email) {
+
     }
 
     public Long getId() {
