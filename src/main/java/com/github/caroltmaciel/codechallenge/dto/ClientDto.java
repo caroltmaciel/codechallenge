@@ -1,5 +1,8 @@
 package com.github.caroltmaciel.codechallenge.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ClientDto {
@@ -8,7 +11,9 @@ public class ClientDto {
     private Integer phone;
     private String email;
     private String name;
-    private Date birthDate;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthDate;
     private String companyIdentifier;
 
     public ClientDto() {
@@ -46,11 +51,11 @@ public class ClientDto {
         this.name = name;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

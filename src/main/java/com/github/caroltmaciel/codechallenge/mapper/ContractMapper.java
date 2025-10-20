@@ -4,6 +4,7 @@ import com.github.caroltmaciel.codechallenge.domain.Contract;
 import com.github.caroltmaciel.codechallenge.dto.ContractDto;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,9 @@ public class ContractMapper {
 
     public ContractDto mapToContractDto(Contract contract) {
         Long id = contract.getId();
-        LocalDateTime startDate = contract.getStartDate();
-        LocalDateTime endDate = contract.getEndDate();
+        LocalDate startDate = contract.getStartDate();
+        LocalDate endDate = contract.getEndDate();
+
         Integer costAmount = contract.getCostAmount();
         LocalDateTime updateDate = contract.getUpdateDate();
 
@@ -38,10 +40,16 @@ public class ContractMapper {
         return dto;
     }
 
+    private LocalDate toStartDate(LocalDate startDate) {
+        return startDate == null
+                ? LocalDate.now()
+                : startDate;
+    }
+
     public Contract mapToContract(ContractDto dto) {
         Long id = dto.getId();
-        LocalDateTime startDate = dto.getStartDate();
-        LocalDateTime endDate = dto.getEndDate();
+        LocalDate startDate = toStartDate (dto.getStartDate());
+        LocalDate endDate = dto.getEndDate();
         Integer costAmount = dto.getCostAmount();
         LocalDateTime updateDate = dto.getUpdateDate();
 

@@ -1,26 +1,45 @@
 package com.github.caroltmaciel.codechallenge.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
+@Entity
 @Table
 public class Client {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private Integer phone;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String name;
-    private Date birthDate;
+
+    @Temporal(TemporalType.DATE)
+    private LocalDate birthDate;
     private String companyIdentifier;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
+    private List<Contract> contracts;
 
     public Client() {
     }
 
     //Person Constructor
-    public Client(Long id, Integer phone, String email, String name, Date birthDate) {
+    public Client(Long id, Integer phone, String email, String name, LocalDate birthDate) {
         this.id = id;
         this.phone = phone;
         this.email = email;
@@ -69,11 +88,11 @@ public class Client {
         this.name = name;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -83,5 +102,13 @@ public class Client {
 
     public void setCompanyIdentifier(String companyIdentifier) {
         this.companyIdentifier = companyIdentifier;
+    }
+
+    public List<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(List<Contract> contracts) {
+        this.contracts = contracts;
     }
 }

@@ -1,8 +1,11 @@
 package com.github.caroltmaciel.codechallenge.controller;
 
+import com.github.caroltmaciel.codechallenge.domain.Contract;
 import com.github.caroltmaciel.codechallenge.dto.ClientDto;
+import com.github.caroltmaciel.codechallenge.dto.ContractDto;
 import com.github.caroltmaciel.codechallenge.exception.NotFoundException;
 import com.github.caroltmaciel.codechallenge.service.ClientService;
+import com.github.caroltmaciel.codechallenge.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,11 +24,12 @@ import java.net.URI;
 @RequestMapping(value = "/clients")
 public class ClientController {
 
-    @Autowired
-    private ClientService service;
+    private final ClientService service;
+    private final ContractService contractService;
 
-    public ClientController(ClientService service) {
+    public ClientController(ClientService service, ContractService contractService) {
         this.service = service;
+        this.contractService = contractService;
     }
 
     @GetMapping(value = "/{id}")
@@ -52,6 +56,13 @@ public class ClientController {
         objDto.setId(id);
         service.update(objDto);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(value = "/{id}/contracts")
+    public ResponseEntity<Void> insertContract(@PathVariable(name = "id") Long clientId, @RequestBody ContractDto objDto) {
+        Contract obj = contractService.insert(clientId, objDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 
 }

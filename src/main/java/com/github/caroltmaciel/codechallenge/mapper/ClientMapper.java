@@ -4,6 +4,7 @@ import com.github.caroltmaciel.codechallenge.domain.Client;
 import com.github.caroltmaciel.codechallenge.dto.ClientDto;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Component
@@ -14,7 +15,7 @@ public class ClientMapper {
         Integer phone = client.getPhone();
         String email = client.getEmail();
         Long id = client.getId();
-        Date birthDate = client.getBirthDate();
+        LocalDate birthDate = client.getBirthDate();
         String companyIdentifier = client.getCompanyIdentifier();
 
         ClientDto dto = new ClientDto();
@@ -33,7 +34,7 @@ public class ClientMapper {
         Integer phone = dto.getPhone();
         String email = dto.getEmail();
         Long id = dto.getId();
-        Date birthDate = dto.getBirthDate();
+        LocalDate birthDate = dto.getBirthDate();
         String companyIdentifier = dto.getCompanyIdentifier();
 
         Client client = new Client();

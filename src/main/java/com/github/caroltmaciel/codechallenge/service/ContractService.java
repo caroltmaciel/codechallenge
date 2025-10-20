@@ -1,13 +1,15 @@
 package com.github.caroltmaciel.codechallenge.service;
 
+import com.github.caroltmaciel.codechallenge.domain.Client;
 import com.github.caroltmaciel.codechallenge.domain.Contract;
 import com.github.caroltmaciel.codechallenge.dto.ContractDto;
 import com.github.caroltmaciel.codechallenge.exception.NotFoundException;
+import com.github.caroltmaciel.codechallenge.mapper.ContractMapper;
 import com.github.caroltmaciel.codechallenge.repository.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Service
 public class ContractService {
@@ -16,22 +18,21 @@ public class ContractService {
     @Autowired
     private ContractRepository repo;
 
-    public List<Contract> findAll() {
-        return repo.findAll();
+    @Autowired
+    private ContractMapper mapper;
+
+    public void findAllByClient(Long clientId) {
+
     }
 
-    public Contract findById(Long id) throws NotFoundException {
-        return repo.findById(id)
-                .orElseThrow(() -> new NotFoundException(CONTRACT_NOT_FOUND));
-    }
+    public Contract insert(Long clientId, ContractDto objDto) {
+        Contract contract = mapper.mapToContract(objDto);
 
-    public Contract insert(Contract obj) {
-        return repo.insert(obj);
-    }
-
-    public void delete(Long id) throws NotFoundException {
-        findById(id);
-        repo.deleteById(id);
+        Client client = new Client();
+        client.setId(clientId);
+        contract.setClient(client);
+        contract.setUpdateDate(LocalDateTime.now());
+        return repo.save(contract);
     }
 
     public Contract update(Contract obj) throws NotFoundException {

@@ -1,15 +1,19 @@
 package com.github.caroltmaciel.codechallenge.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.caroltmaciel.codechallenge.domain.Contract;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class ContractDto {
 
     private Long id;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private Integer costAmount;
+
+    @JsonIgnore
     private LocalDateTime updateDate;
 
     public ContractDto() {
@@ -31,19 +35,19 @@ public class ContractDto {
         this.id = id;
     }
 
-    public LocalDateTime getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
