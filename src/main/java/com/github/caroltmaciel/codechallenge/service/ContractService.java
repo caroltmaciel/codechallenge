@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class ContractService {
     private ContractMapper mapper;
 
     public List<ContractDto> findAllByClient(Long clientId) {
-        List<Contract> contractList = repo.findContractsByClientId(clientId);
+        List<Contract> contractList = repo.findAllActiveContracts(clientId, LocalDate.now());
         List<ContractDto> contractDtoList = mapper.mapToContractDtoList(contractList);
         return contractDtoList;
     }
