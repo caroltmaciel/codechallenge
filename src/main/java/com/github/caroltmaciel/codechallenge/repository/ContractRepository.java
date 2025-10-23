@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface ContractRepository extends JpaRepository<Contract, Long> {
@@ -14,5 +15,7 @@ public interface ContractRepository extends JpaRepository<Contract, Long> {
     @Modifying
     @Query("update Contract c set c.costAmount = ?2, c.updateDate = ?3 where c.id = ?1")
     int updateCostAmount(Long contractId, Integer costAmount, LocalDateTime updateDate);
+
+    List<Contract> findContractsByClientId(Long clientId);
 
 }

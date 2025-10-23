@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -57,6 +58,12 @@ public class ClientController {
         objDto.setId(id);
         service.update(objDto);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/contracts")
+    public ResponseEntity<List<ContractDto>> findContracts(@PathVariable(name = "id") Long clientId) {
+        List<ContractDto> obj = contractService.findAllByClient(clientId);
+        return ResponseEntity.ok(obj);
     }
 
     @PostMapping(value = "/{id}/contracts")

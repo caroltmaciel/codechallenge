@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ContractService {
@@ -22,8 +23,10 @@ public class ContractService {
     @Autowired
     private ContractMapper mapper;
 
-    public void findAllByClient(Long clientId) {
-
+    public List<ContractDto> findAllByClient(Long clientId) {
+        List<Contract> contractList = repo.findContractsByClientId(clientId);
+        List<ContractDto> contractDtoList = mapper.mapToContractDtoList(contractList);
+        return contractDtoList;
     }
 
     public Contract insert(Long clientId, ContractDto objDto) {
