@@ -3,13 +3,14 @@ package com.github.caroltmaciel.codechallenge.controller;
 import com.github.caroltmaciel.codechallenge.domain.Contract;
 import com.github.caroltmaciel.codechallenge.dto.ClientDto;
 import com.github.caroltmaciel.codechallenge.dto.ContractDto;
+import com.github.caroltmaciel.codechallenge.dto.UpdateContractRequest;
 import com.github.caroltmaciel.codechallenge.exception.NotFoundException;
 import com.github.caroltmaciel.codechallenge.service.ClientService;
 import com.github.caroltmaciel.codechallenge.service.ContractService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -63,6 +64,12 @@ public class ClientController {
         Contract obj = contractService.insert(clientId, objDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @PatchMapping(value = "/{id}/contracts/{contractId}")
+    public ResponseEntity<Void> updateContract(@PathVariable(name = "id") Long clientId, @PathVariable(name = "contractId") Long contractId, @RequestBody UpdateContractRequest request) {
+        contractService.update(contractId, request);
+        return ResponseEntity.ok().build();
     }
 
 }

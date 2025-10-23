@@ -3,11 +3,12 @@ package com.github.caroltmaciel.codechallenge.service;
 import com.github.caroltmaciel.codechallenge.domain.Client;
 import com.github.caroltmaciel.codechallenge.domain.Contract;
 import com.github.caroltmaciel.codechallenge.dto.ContractDto;
-import com.github.caroltmaciel.codechallenge.exception.NotFoundException;
+import com.github.caroltmaciel.codechallenge.dto.UpdateContractRequest;
 import com.github.caroltmaciel.codechallenge.mapper.ContractMapper;
 import com.github.caroltmaciel.codechallenge.repository.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -35,10 +36,11 @@ public class ContractService {
         return repo.save(contract);
     }
 
-    public Contract update(Contract obj) throws NotFoundException {
-        Contract newObj = repo.findById(obj.getId()).orElseThrow(() -> new NotFoundException(CONTRACT_NOT_FOUND));
-        updateData(newObj, obj);
-        return repo.save(newObj);
+    @Transactional
+    public void update(Long contractId, UpdateContractRequest request) {
+        Integer costAmount = request.getCostAmount();
+
+        repo.updateCostAmount(contractId, costAmount, LocalDateTime.now());
     }
 
 
