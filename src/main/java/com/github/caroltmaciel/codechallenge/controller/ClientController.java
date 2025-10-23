@@ -66,6 +66,12 @@ public class ClientController {
         return ResponseEntity.ok(obj);
     }
 
+    @GetMapping(value = "/{id}/contracts/sum")
+    public ResponseEntity<Double> getSumAmountOfAllActiveContracts(@PathVariable(name = "id") Long clientId) {
+        Double obj = contractService.getSumAmountOfAllActiveContracts(clientId);
+        return ResponseEntity.ok(obj);
+    }
+
     @PostMapping(value = "/{id}/contracts")
     public ResponseEntity<Void> insertContract(@PathVariable(name = "id") Long clientId, @RequestBody ContractDto objDto) {
         Contract obj = contractService.insert(clientId, objDto);

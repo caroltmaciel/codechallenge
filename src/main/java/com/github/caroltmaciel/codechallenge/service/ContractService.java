@@ -47,17 +47,8 @@ public class ContractService {
         repo.updateCostAmount(contractId, costAmount, LocalDateTime.now());
     }
 
-
-    private void updateData(Contract newObj, Contract obj) {
-        newObj.setId(obj.getId());
-        newObj.setStartDate(obj.getStartDate());
-        newObj.setEndDate(obj.getEndDate());
-        newObj.setCostAmount(obj.getCostAmount());
-        newObj.setUpdateDate(obj.getUpdateDate());
-    }
-
-    public Contract fromDTO(ContractDto objDto) {
-        return new Contract(objDto.getId(), objDto.getStartDate(), objDto.getEndDate(), objDto.getCostAmount(), objDto.getUpdateDate());
+    public Double getSumAmountOfAllActiveContracts(Long clientId) {
+        return repo.sumAmountOfAllActiveContracts(clientId, LocalDate.now());
     }
 
 }
