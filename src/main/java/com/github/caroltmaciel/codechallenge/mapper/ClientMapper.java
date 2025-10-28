@@ -5,7 +5,6 @@ import com.github.caroltmaciel.codechallenge.dto.ClientDto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Component
 public class ClientMapper {

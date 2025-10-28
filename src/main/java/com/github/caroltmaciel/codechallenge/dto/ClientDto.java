@@ -3,7 +3,6 @@ package com.github.caroltmaciel.codechallenge.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class ClientDto {
 

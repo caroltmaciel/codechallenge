@@ -48,7 +48,7 @@ public class ContractMapper {
 
     public Contract mapToContract(ContractDto dto) {
         Long id = dto.getId();
-        LocalDate startDate = toStartDate (dto.getStartDate());
+        LocalDate startDate = toStartDate(dto.getStartDate());
         LocalDate endDate = dto.getEndDate();
         Integer costAmount = dto.getCostAmount();
         LocalDateTime updateDate = dto.getUpdateDate();

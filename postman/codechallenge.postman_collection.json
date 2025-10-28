@@ -1,0 +1,470 @@
+{
+  "info": {
+    "_postman_id": "ea079bfc-ee3b-4b80-ad55-9b4618679f89",
+    "name": "codechallenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38043144"
+  },
+  "item": [
+    {
+      "name": "Create",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"phone\": \"22253222\",\r\n    \"name\": \"teofilo\",\r\n    \"email\": \"teofilo@hotmail.com\",\r\n    \"birthDate\": \"1993-07-05\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Company",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"phone\": \"468471356\",\r\n    \"name\": \"Boldo Mate\",\r\n    \"email\": \"boldomate@hotmail.com\",\r\n    \"companyIdentifier\": \"aaa-123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Contract",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"startDate\": null,\r\n    \"endDate\": \"2026-07-05\",\r\n    \"costAmount\": 1500\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search By Id",
+      "item": [
+        {
+          "name": "Search Person",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Company",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Delete",
+      "item": [
+        {
+          "name": "Delete Company",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Person",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Update",
+      "item": [
+        {
+          "name": "Update Contract",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"costAmount\": 10000\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search Sum Amount",
+      "item": [
+        {
+          "name": "Search Sum Amount Of All Active Contracts",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts/sum",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts",
+                "sum"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Sum Amount Of All Active Contracts Start",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts/sum?startDate=2007-12-03T10:15:30",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts",
+                "sum"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2007-12-03T10:15:30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Sum Amount Of All Active Contracts End",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts/sum?endDate=2030-12-03T10:15:30",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts",
+                "sum"
+              ],
+              "query": [
+                {
+                  "key": "endDate",
+                  "value": "2030-12-03T10:15:30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Sum Amount Of All Active Contracts Start End",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts/sum?startDate=2007-12-03T10:15:30&endDate=2030-12-03T10:15:30",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts",
+                "sum"
+              ],
+              "query": [
+                {
+                  "key": "startDate",
+                  "value": "2007-12-03T10:15:30"
+                },
+                {
+                  "key": "endDate",
+                  "value": "2030-12-03T10:15:30"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Search Contracts",
+      "item": [
+        {
+          "name": "Search All Contracts From A Client",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/clients/5/contracts",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "clients",
+                "5",
+                "contracts"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
