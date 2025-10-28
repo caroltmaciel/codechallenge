@@ -47,8 +47,17 @@ public class ContractService {
         repo.updateCostAmount(contractId, costAmount, LocalDateTime.now());
     }
 
-    public Double getSumAmountOfAllActiveContracts(Long clientId) {
-        return repo.sumAmountOfAllActiveContracts(clientId, LocalDate.now());
+    public Double getSumAmountOfAllActiveContracts(Long clientId, LocalDateTime start, LocalDateTime end) {
+        LocalDate now = LocalDate.now();
+        if (start != null && end != null) {
+            return repo.sumAmountOfAllActiveContractsFilterByStartEnd(clientId, now, start, end);
+        } else if (start != null) {
+            return repo.sumAmountOfAllActiveContractsFilterByStart(clientId, now, start);
+        } else if (end != null) {
+            return repo.sumAmountOfAllActiveContractsFilterByEnd(clientId, now, end);
+        } else {
+            return repo.sumAmountOfAllActiveContracts(clientId, now);
+        }
     }
 
 }

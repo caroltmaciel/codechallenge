@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -67,8 +70,10 @@ public class ClientController {
     }
 
     @GetMapping(value = "/{id}/contracts/sum")
-    public ResponseEntity<Double> getSumAmountOfAllActiveContracts(@PathVariable(name = "id") Long clientId) {
-        Double obj = contractService.getSumAmountOfAllActiveContracts(clientId);
+    public ResponseEntity<Double> getSumAmountOfAllActiveContracts(@PathVariable(name = "id") Long clientId,
+                                                                   @RequestParam(name = "startDate", required = false) LocalDateTime start,
+                                                                   @RequestParam(name = "endDate", required = false) LocalDateTime end) {
+        Double obj = contractService.getSumAmountOfAllActiveContracts(clientId, start, end);
         return ResponseEntity.ok(obj);
     }
 

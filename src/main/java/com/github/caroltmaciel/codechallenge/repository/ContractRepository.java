@@ -23,4 +23,13 @@ public interface ContractRepository extends JpaRepository<Contract, Long> {
     @Query("select sum(c.costAmount) from Contract c where c.client.id =?1 and c.endDate > ?2")
     Double sumAmountOfAllActiveContracts(Long clientId, LocalDate currentDate);
 
+    @Query("select sum(c.costAmount) from Contract c where c.client.id =?1 and c.endDate > ?2 and c.updateDate >= ?3")
+    Double sumAmountOfAllActiveContractsFilterByStart(Long clientId, LocalDate currentDate, LocalDateTime start);
+
+    @Query("select sum(c.costAmount) from Contract c where c.client.id =?1 and c.endDate > ?2 and c.updateDate <= ?3")
+    Double sumAmountOfAllActiveContractsFilterByEnd(Long clientId, LocalDate currentDate, LocalDateTime end);
+
+    @Query("select sum(c.costAmount) from Contract c where c.client.id =?1 and c.endDate > ?2 and c.updateDate >= ?3 and c.updateDate <= ?4")
+    Double sumAmountOfAllActiveContractsFilterByStartEnd(Long clientId, LocalDate currentDate, LocalDateTime start, LocalDateTime end);
+
 }
